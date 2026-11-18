@@ -113,6 +113,24 @@ const Header = () => {
                   {power ? <PowerIcon size={15} /> : <PowerOffIcon size={15} />}
                 </button>
                 <button onClick={handlelogout} type='logout' className=" gap-2 rounded-lg bg-red-700 px-4 py-3 font-semibold text-white hover:bg-red-800"> <LogOut size={15} /></button>
+                {
+              log && (
+                <div>
+                  <div className="fixed inset-0 z-60 flex items-center justify-center bg-[#21160f]/65 px-4 backdrop-blur-sm">
+                    <div className='border border-gray-400 bg-gray-50 p-4'>
+                      <div>
+                        <p className='flex justify-center items-center gap-2 text-2xl font-bold font-serif'>Alert <span className='text-red-600'><TriangleExclamationPoint size={19}/></span></p>
+                        <p className='px-2 py-3 text-green-800 font-semibold'>Are you really want to logout the account?</p>
+                        <div className='flex justify-around items-center'>
+                          <button onClick={() => setLog(false)} className='border border-blue-600 bg-blue-600 text-white p-2 rounded-2xl font-semibold hover:bg-blue-400 hover:font-bold'>Cancel</button>
+                          <button onClick={() => { setLog(false); navigate('/') }} className='border border-red-700 bg-red-600 text-white p-2 rounded-2xl font-semibold hover:bg-red-400 hover:font-bold'>Yes,logout</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
               </div>
 
             </div>

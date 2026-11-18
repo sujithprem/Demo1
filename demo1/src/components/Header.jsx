@@ -71,7 +71,7 @@ const Header = () => {
                         <p className='px-2 py-3 text-green-800 font-semibold'>Are you really want to logout the account?</p>
                         <div className='flex justify-around items-center'>
                           <button onClick={() => setLog(false)} className='border border-blue-600 bg-blue-600 text-white p-2 rounded-2xl font-semibold hover:bg-blue-400 hover:font-bold'>Cancel</button>
-                          <button onClick={() => { setLog(false); navigate('/login') }} className='border border-red-700 bg-red-600 text-white p-2 rounded-2xl font-semibold hover:bg-red-400 hover:font-bold'>Yes,logout</button>
+                          <button onClick={() => { setLog(false); navigate('/') }} className='border border-red-700 bg-red-600 text-white p-2 rounded-2xl font-semibold hover:bg-red-400 hover:font-bold'>Yes,logout</button>
                         </div>
                       </div>
                     </div>

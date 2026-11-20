@@ -1,25 +1,10 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Header from '../components/Header'
-import {
-  Coffee,
-  Plus,
-  Search,
-  Eye,
-  Edit3,
-  Trash2,
-  X,
-  Loader2,
-  Package,
-  ChevronLeft,
-  ChevronRight,
-  AlertTriangle,
-  Package2,
-  PowerIcon,
-  PowerOff
-} from 'lucide-react'
+import { Coffee, Plus, Search, Eye, Edit3, Trash2, X, Loader2, Package, ChevronLeft, ChevronRight, AlertTriangle, Package2, PowerIcon, PowerOff } from 'lucide-react'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import AllFooter from '../components/AllFooter'
 
 const STORAGE_KEY = 'coffee_products'
 const PRODUCTS_PER_PAGE = 10
@@ -298,11 +283,7 @@ const Products = () => {
     <>
       <Header />
 
-      <ToastContainer
-        position="top-center"
-        autoClose={2500}
-        theme="colored"
-      />
+      <ToastContainer position="top-center" autoClose={2500} theme="colored"/>
 
       <main className="min-h-screen bg-amber-100/60 px-4 py-8 text-[#30231b] sm:px-6 lg:px-8">
 
@@ -313,49 +294,19 @@ const Products = () => {
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#b57b50]" />
-
-                <p className="text-[10px] font-bold uppercase tracking-[2px] text-[#7b461d]">
-                  Coffee Shop Management
-                </p>
+                <p className="text-[10px] font-bold uppercase tracking-[2px] text-[#7b461d]">Coffee Shop Management</p>
               </div>
-
-              <h1 className="font-serif text-3xl font-bold text-[#38281e] sm:text-4xl">
-                Product Management
-              </h1>
-
-              <p className="mt-2 text-sm text-[#383634]">
-                Manage your coffee menu, pricing and availability.
-              </p>
+              <h1 className="font-serif text-3xl font-bold text-[#38281e] sm:text-4xl">Product Management</h1>
+              <p className="mt-2 text-sm text-[#383634]">Manage your coffee menu, pricing and availability.</p>
             </div>
 
             <div className="relative w-full py-3.5 sm:max-w-sm">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9b806b]"/>
+              <input type="search" placeholder="Search coffee products..." value={searchQuery} onChange={e => {setSearchQuery(e.target.value)
+                   setCurrentPage(1)}}className={`${inputClass} pl-11`}/>
+            </div>
 
-                <Search
-                  size={18}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9b806b]"
-                />
-
-                <input
-                  type="search"
-                  placeholder="Search coffee products..."
-                  value={searchQuery}
-                  onChange={e => {
-                    setSearchQuery(e.target.value)
-                    setCurrentPage(1)
-                  }}
-                  className={`${inputClass} pl-11`}
-                />
-
-              </div>
-
-            <button
-              type="button"
-              onClick={openAddModal}
-              className="flex items-center justify-center gap-2 rounded-xl bg-[#68452f] px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#523724]"
-            >
-              <Plus size={18} />
-              Add New Product
-            </button>
+            <button type="button" onClick={openAddModal} className="flex items-center justify-center gap-2 rounded-xl bg-[#68452f] px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#523724]"> <Plus size={18} />Add New Product</button>
 
           </section>
 
@@ -364,13 +315,8 @@ const Products = () => {
             <div className="mb-5 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 
               <div>
-                <h2 className="font-serif text-2xl font-semibold text-[#38281e]">
-                  Product Table
-                </h2>
-
-                <p className="mt-1 text-xs text-[#4a4847]">
-                  Your complete product collection.
-                </p>
+                <h2 className="font-serif text-2xl font-semibold text-[#38281e]">Product Table</h2>
+                <p className="mt-1 text-xs text-[#4a4847]">Your complete product collection.</p>
               </div>
 
             </div>
@@ -381,10 +327,7 @@ const Products = () => {
 
                 <div className="flex flex-col items-center justify-center py-24">
                   <Loader2 size={35} className="animate-spin text-[#9b6b46]" />
-
-                  <p className="mt-4 text-sm font-semibold text-[#806f60]">
-                    Brewing your product collection...
-                  </p>
+                  <p className="mt-4 text-sm font-semibold text-[#806f60]">Brewing your product collection...</p>
                 </div>
 
               ) : filteredProducts.length > 0 ? (
@@ -392,9 +335,7 @@ const Products = () => {
                 <>
 
                   <div className="overflow-x-auto">
-
                     <table className="w-full min-w-187.5 border-collapse text-left">
-
                       <thead>
                         <tr className="bg-[#f4e0c5] text-[10px] font-extrabold uppercase tracking-[1.5px] text-[#80664f]">
                           <th className="px-5 py-5">#</th>
@@ -407,63 +348,26 @@ const Products = () => {
                       </thead>
 
                       <tbody>
-
                         {currentProducts.map((product, index) => {
-
                           const rate = product.rate ?? product.price ?? 0
                           const gst = product.gst ?? 5
                           const isActive = product.isAvailable !== false
 
                           return (
-                            <tr
-                              key={product.id}
-                              className="border-t border-[#e1a055] bg-[#ebeed817] text-sm transition hover:bg-[#e0dfde]"
-                            >
-
-                              <td className={`${cellClass} font-semibold text-[#a18c79]`}>
-                                {String(startIndex + index + 1).padStart(2, '0')}
-                              </td>
-
+                            <tr key={product.id} className="border-t border-[#e1a055] bg-[#ebeed817] text-sm transition hover:bg-[#e0dfde]">
+                              <td className={`${cellClass} font-semibold text-[#a18c79]`}>{String(startIndex + index + 1).padStart(2, '0')}</td>
                               <td className={cellClass}>
                                 <div className="flex items-center gap-3">
 
-                                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-800/30 from-[#f5e8d8] to-[#e8d2ba] text-[#68452f]">
-                                    <Package2 size={15} />
-                                  </div>
-
-                                  <div>
-                                    <p className="items-center text-base font-extrabold text-[#4b1c04]">
-                                      {product.name}
-                                    </p>
-
-                                  </div>
-
+                                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-800/30 from-[#f5e8d8] to-[#e8d2ba] text-[#68452f]"><Package2 size={15} /></div>
+                                  <div><p className="items-center text-base font-extrabold text-[#4b1c04]">{product.name}</p></div>
                                 </div>
                               </td>
 
-                              <td className={`${cellClass} font-extrabold text-[#f50a0a]`}>
-                                ₹{Number(rate).toFixed(2)}
-                              </td>
-
+                              <td className={`${cellClass} font-extrabold text-[#f50a0a]`}>₹{Number(rate).toFixed(2)}</td>
+                              <td className={cellClass}><span className="rounded-lg bg-[#f5f0e8] px-3 py-1.5 text-xs font-extrabold text-[#0940f7]">{gst}%</span></td>
                               <td className={cellClass}>
-                                <span className="rounded-lg bg-[#f5f0e8] px-3 py-1.5 text-xs font-extrabold text-[#0940f7]">
-                                  {gst}%
-                                </span>
-                              </td>
-
-                              <td className={cellClass}>
-                                <button
-                                  type="button"
-                                  onClick={() => toggleAvailability(product)}
-                                  className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-extrabold ${
-                                    isActive
-                                      ? 'bg-[#e6efe5] hover:bg-[#2bf024] text-[#2bf024] hover:text-[#eff8ef]'
-                                      : 'bg-[#f4e4df] hover:bg-[#e12f0c] text-[#e12f0c] hover:text-[#eff8ef]'
-                                  }`}
-                                >
-
-                                  {isActive ? <PowerIcon size={12} /> : <PowerOff size={12} />}
-                                </button>
+                                <button type="button" onClick={() => toggleAvailability(product)} className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-extrabold ${isActive ? 'bg-[#e6efe5] hover:bg-[#2bf024] text-[#2bf024] hover:text-[#eff8ef]' : 'bg-[#f4e4df] hover:bg-[#e12f0c] text-[#e12f0c] hover:text-[#eff8ef]'}`}>{isActive ? <PowerIcon size={12} /> : <PowerOff size={12} />}</button>
                               </td>
 
                               <td className={`${cellClass} text-right`}>
@@ -510,62 +414,21 @@ const Products = () => {
 
                   <div className="flex flex-col items-center justify-between gap-4 border-t border-[#eee5da] bg-[#f4e0c5] px-5 py-5 sm:flex-row">
 
-                    <p className="text-xs font-medium text-[#806f60]">
-                      Showing{' '}
-                      <span className="font-bold text-[#68452f]">
-                        {startIndex + 1} - {Math.min(
-                          startIndex + PRODUCTS_PER_PAGE,
-                          filteredProducts.length
-                        )}
-                      </span>
-                      {' '}of{' '}
-                      <span className="font-bold text-[#68452f]">
-                        {filteredProducts.length}
-                      </span>
-                      {' '}products
-                    </p>
+                    <p className="text-xs font-medium text-[#806f60]">Showing{' '}<span className="font-bold text-[#68452f]">{startIndex + 1} - {Math.min( startIndex + PRODUCTS_PER_PAGE,filteredProducts.length)}</span>{' '}of{' '}<span className="font-bold text-[#68452f]">{filteredProducts.length}</span>{' '}products</p>
 
                     <div className="flex flex-wrap items-center justify-center gap-2">
 
-                      <button
-                        type="button"
-                        onClick={() => goToPage(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className="flex h-9 items-center gap-1 rounded-lg border border-[#e7ddd0] px-3 text-xs font-semibold text-[#68452f] disabled:opacity-40"
-                      >
-                        <ChevronLeft size={15} />
-                        Previous
-                      </button>
+                      <button type="button" onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="flex h-9 items-center gap-1 rounded-lg border border-[#e7ddd0] px-3 text-xs font-semibold text-[#68452f] disabled:opacity-40"> <ChevronLeft size={15} /> Previous</button>
 
                       {Array.from(
                         { length: totalPages },
                         (_, index) => index + 1
                       ).map(page => (
 
-                        <button
-                          key={page}
-                          type="button"
-                          onClick={() => goToPage(page)}
-                          className={`h-9 min-w-9 rounded-lg px-3 text-xs font-bold ${
-                            currentPage === page
-                              ? 'bg-[#68452f] text-white'
-                              : 'border border-[#e7ddd0] text-[#68452f] hover:bg-[#f3e8db]'
-                          }`}
-                        >
-                          {page}
-                        </button>
+                        <button key={page} type="button" onClick={() => goToPage(page)} className={`h-9 min-w-9 rounded-lg px-3 text-xs font-bold ${currentPage === page ? 'bg-[#68452f] text-white' : 'border border-[#e7ddd0] text-[#68452f] hover:bg-[#f3e8db]'}`}>{page}</button>
 
                       ))}
-
-                      <button
-                        type="button"
-                        onClick={() => goToPage(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                        className="flex h-9 items-center gap-1 rounded-lg border border-[#e7ddd0] px-3 text-xs font-semibold text-[#68452f] disabled:opacity-40"
-                      >
-                        Next
-                        <ChevronRight size={15} />
-                      </button>
+                      <button type="button" onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages} className="flex h-9 items-center gap-1 rounded-lg border border-[#e7ddd0] px-3 text-xs font-semibold text-[#68452f] disabled:opacity-40">Next<ChevronRight size={15} /></button>
 
                     </div>
 
@@ -581,15 +444,9 @@ const Products = () => {
                     <Package size={34} />
                   </div>
 
-                  <h3 className="font-serif text-2xl font-semibold text-[#38281e]">
-                    {searchQuery ? 'No products found' : 'Your menu is waiting'}
-                  </h3>
+                  <h3 className="font-serif text-2xl font-semibold text-[#38281e]">{searchQuery ? 'No products found' : 'Your menu is waiting'}</h3>
 
-                  <p className="mt-2 max-w-sm text-sm text-[#806f60]">
-                    {searchQuery
-                      ? 'Try searching with a different product name.'
-                      : 'Start building your coffee collection by adding your first product.'}
-                  </p>
+                  <p className="mt-2 max-w-sm text-sm text-[#806f60]">{searchQuery ? 'Try searching with a different product name.' : 'Start building your coffee collection by adding your first product.'}</p>
 
                   {!searchQuery && (
                     <button
@@ -803,11 +660,10 @@ const Products = () => {
                         ...prev,
                         gst: String(gst)
                       }))}
-                      className={`rounded-lg border py-2 text-xs font-bold transition ${
-                        Number(form.gst) === gst
+                      className={`rounded-lg border py-2 text-xs font-bold transition ${Number(form.gst) === gst
                           ? 'border-[#a6a61f] bg-[#efd408] text-amber-950'
                           : 'border-[#e7ddd0] bg-white text-[#68452f] hover:bg-[#f3e8db]'
-                      }`}
+                        }`}
                     >
                       {gst}%
                     </button>
@@ -815,18 +671,6 @@ const Products = () => {
                   ))}
 
                 </div>
-
-                <input
-                  name="gst"
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="0.01"
-                  placeholder="Custom GST percentage"
-                  value={form.gst}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
 
               </div>
 
@@ -1016,6 +860,11 @@ const Products = () => {
         </div>
 
       )}
+
+      {/* footer */}
+      <div className='bg-amber-100/60'>
+        <AllFooter />
+      </div>
 
     </>
   )

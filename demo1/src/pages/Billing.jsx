@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 const STORAGE_KEY = 'coffee_products'
 const BILL_HISTORY_KEY = 'bill_history'
 
-const initialMenu = [{ id: 1, name: 'Espresso', price: 12, stock: 20 }, { id: 2, name: 'Americano', price: 23, stock: 18 }, { id: 3, name: 'Cappuccino', price: 14, stock: 15 }, { id: 4, name: 'Latte', price: 40, stock: 16 }, { id: 5, name: 'Mocha', price: 25, stock: 12 }, { id: 6, name: 'Macchiato', price: 35, stock: 10 }, { id: 7, name: 'Flat White', price: 34, stock: 14 }]
+const initialMenu = [{ id: 1, name: 'Espresso', price: 11.11, stock: 20 }, { id: 2, name: 'Americano', price: 22.22, stock: 18 }, { id: 3, name: 'Cappuccino', price: 12.96, stock: 15 }, { id: 4, name: 'Latte', price: 37, stock: 16 }, { id: 5, name: 'Mocha', price: 23, stock: 12 }, { id: 6, name: 'Macchiato', price: 33, stock: 10 }, { id: 7, name: 'Flat White', price: 32, stock: 14 }]
 
 const Billing = () => {
   const [menu, setMenu] = useState(initialMenu)
@@ -135,9 +135,9 @@ const Billing = () => {
               </div>
 
               {/* product */}
-              <div className='grid gap-7 p-4 sm:p-6 grid-cols-2 md:grid-cols-4 lg:pb-7 xl:grid-cols-5 2xl:grid-cols-6 lg:max-h-80 lg:overflow-auto lg:scrollbar-none'>
+              <div className='grid gap-7 p-4 sm:p-6 grid-cols-2 md:grid-cols-4 lg:pb-7 xl:grid-cols-5 2xl:grid-cols-6 lg:max-h-90 lg:overflow-auto lg:scrollbar-none'>
                 {filteredMenu.map((item) => (
-                  <div key={item.id} className='group flex flex-col rounded-3xl border border-amber-300 bg-gradient-to-br from-yellow-50 via-white to-amber-100 p-2.5 shadow-lg hover:shadow-2xl hover:border-amber-700 transition-all duration-300 hover:scale-105 relative overflow-hidden'>
+                  <div key={item.id} className='group flex flex-col rounded-3xl border border-yellow-700 bg-gradient-to-br from-yellow-100 via-white to-amber-100 p-2.5 shadow-sm shadow-amber-300 hover:shadow-lg hover:border-yellow-300 transition-all duration-300 hover:scale-105 relative overflow-hidden'>
 
                     <div className="absolute -top-8 -right-8 w-24 h-24 bg-yellow-200 rounded-full opacity-40 group-hover:scale-10 transition-transform duration-300 z-0" />
 
@@ -259,8 +259,8 @@ const Billing = () => {
                   </div>
                   <div className='space-y-2 text-xs'>
                     <div className='flex justify-between'><span>Subtotal</span><span>₹{subtotal.toFixed(1)}</span></div>
-                    <div className='flex justify-between'><span>CGST (5%)</span><span>₹{tax.toFixed(0.5)}</span></div>
-                    <div className='flex justify-between'><span>SGST (5%)</span><span>₹{tax.toFixed(0.5)}</span></div>
+                    <div className='flex justify-between'><span>CGST (5%)</span><span>₹{tax.toFixed(1)}</span></div>
+                    <div className='flex justify-between'><span>SGST (5%)</span><span>₹{tax.toFixed(1)}</span></div>
                     <div className='flex justify-between border-t border-dashed border-stone-400 pt-2 text-sm font-bold'><span>Grand Total</span><span>₹{(subtotal + tax).toFixed(2)}</span></div>
                   </div>
                   <p className='mt-5 text-center text-xs'>Thank you. Please visit again!</p>

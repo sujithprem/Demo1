@@ -54,7 +54,7 @@ const Header = () => {
           <p className='font-bold text-yellow-400'>{formatTime}</p>
         </div>
 
-        <div className='hidden md:block'>
+        <div className='hidden lg:block'>
           <div className='flex list-none gap-5 text-xs lg:text-sm border border-amber-800 hover:border-yellow-400 py-4 lg:px-2 rounded-3xl text-yellow-300 font-bold'>
             <Link to='/dashboard'><li className='flex items-center gap-1 hover:bg-fuchsia-100 py-1 px-1 rounded-xl hover:text-black'><BookA size={19} /> Dashboard</li></Link>
             <Link to='/bill'><li className='flex items-center gap-1 hover:bg-fuchsia-100 py-1 px-1 rounded-xl hover:text-black'><BadgeIndianRupee size={19} /> Billing</li></Link>
